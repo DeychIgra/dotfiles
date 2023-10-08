@@ -15,7 +15,7 @@ import psutil
 import json
 from libqtile import hook
 from libqtile import qtile
-from typing import List  
+from typing import List
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown, KeyChord
 from libqtile.lazy import lazy
@@ -41,7 +41,7 @@ wm_bar = "polybar"
 if (os.path.isfile("/usr/bin/VBoxService")):
     terminal = "kitty"
 else:
-    terminal = "alacritty"        
+    terminal = "kitty"
 
 # --------------------------------------------------------
 # Check for Desktop/Laptop
@@ -70,7 +70,7 @@ keys = [
     Key([mod], "Down", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "Up", lazy.layout.up(), desc="Move focus up"),
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window around"),
-    
+
     # Move
     Key([mod, "shift"], "Left", lazy.layout.shuffle_left(), desc="Move window to the left"),
     Key([mod, "shift"], "Right", lazy.layout.shuffle_right(), desc="Move window to the right"),
@@ -86,15 +86,15 @@ keys = [
     # Size
     # Key([mod], "h", lazy.layout.shrink(), lazy.layout.decrease_nmaster(), desc='Shrink window (MonadTall)'),
     # Key([mod], "l", lazy.layout.grow(), lazy.layout.increase_nmaster(), desc='Expand window (MonadTall)'),
-    Key([mod, "control"], "Down", lazy.layout.shrink(), desc="Grow window to the left"),
-    Key([mod, "control"], "Up", lazy.layout.grow(), desc="Grow window to the right"),
-    # Key([mod, "control"], "Down", lazy.layout.grow_down(), desc="Grow window down"),
-    # Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
+    Key([mod, "control"], "Left", lazy.layout.shrink(), desc="Grow window to the left"),
+    Key([mod, "control"], "Right", lazy.layout.grow(), desc="Grow window to the right"),
+    Key([mod, "control"], "Down", lazy.layout.grow_down(), desc="Grow window down"),
+    Key([mod, "control"], "Up", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
     # Floating
     Key([mod], "t", lazy.window.toggle_floating(), desc='Toggle floating'),
-    
+
     # Split
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
 
@@ -108,7 +108,7 @@ keys = [
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.spawn(home + "/dotfiles/scripts/powermenu.sh"), desc="Open Powermenu"),
-    
+
     # Apps
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod, "control"], "Return", lazy.spawn(home + "/dotfiles/scripts/applauncher.sh"), desc="Launch Rofi"),
@@ -174,7 +174,7 @@ ColorI=(colordict['colors']['color9'])
 # Setup Layout Theme
 # --------------------------------------------------------
 
-layout_theme = { 
+layout_theme = {
     "border_width": 3,
     "margin": 15,
     "border_focus": ColorC,

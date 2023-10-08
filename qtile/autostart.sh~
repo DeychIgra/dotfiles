@@ -30,7 +30,7 @@ xfce4-power-manager &
 dunst &
 
 # Launch polybar
-/home/deych/.config/polybar/launch.sh &
+~/dotfiles/polybar/launch.sh &
 
 # Setup Wallpaper and update colors
 ~/dotfiles/scripts/updatewal.sh &
